@@ -3,8 +3,8 @@
     <div class="course-item">
     <h3>{{ course.name }}</h3>
     <p>{{ course.description }}</p>
-    <p>Price: {{ course.price }}</p>
-    <p>Date: {{ course.date }}</p>
+    <p>Price: {{ course.price | currency :'USD'}}</p>
+    <p>Date: {{ course.date | date:'longDate' }} </p>
     <p [hidden]="!course.soldOut">Status: Sold Out</p>
     <img [ngStyle]="{'border': course.soldOut ? '2px solid red' : 'none'}" [src]="course.img" alt="{{ course.name }}" width="100" height="100">
     @if(course.price < 100) {

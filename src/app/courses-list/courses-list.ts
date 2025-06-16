@@ -1,12 +1,12 @@
-import { NgStyle } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PristineChangeEvent } from '@angular/forms';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [NgStyle],
+  imports: [NgStyle, DatePipe, CurrencyPipe],
   templateUrl: './courses-list.html',
-  styleUrl: './courses-list.css'
+  styleUrls: ['./courses-list.css']
 })
 export class CoursesList implements OnInit {
   title = 'Available Courses';
