@@ -26,5 +26,3 @@
     <img [ngStyle]="{'border': courses[2].soldOut ? '2px solid red' : 'none'}" [src]="courses[2].img" alt="{{ courses[2].name }}" width="100" height="100">
     <button (click)="viewDetails(courses[2].name)">View Details</button>
 </div>
-<div class="no-courses" *ngIf="courses.length === 0">
-    <p>No courses available at the moment.</p>
