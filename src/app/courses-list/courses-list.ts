@@ -1,9 +1,10 @@
+import { NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { PristineChangeEvent } from '@angular/forms';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [],
+  imports: [NgStyle],
   templateUrl: './courses-list.html',
   styleUrl: './courses-list.css'
 })
