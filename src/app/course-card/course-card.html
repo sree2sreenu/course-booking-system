@@ -8,5 +8,5 @@
     @if(course.price < 100) {
         <div class="special-offer">Special Offer!</div>
     }
-    <button (click)="viewDetails(course.title)">View Details</button>
+    <button [disabled]="course.soldOut" (click)="onCourseBooked()">Book Course</button>
 </div>
