@@ -1,0 +1,12 @@
+<div class="course-card">
+    <img [src]="course.img" alt="{{ course.title }}" width="100" height="100">
+    <h3>{{ course.title }}</h3>
+    <p>{{ course.description }}</p>
+    <p>Price: {{ course.price | currency :'USD'}}</p>
+    <p>Date: {{ course.date | date:'longDate' }} </p>
+    <p [hidden]="!course.soldOut">Status: Sold Out</p>
+    @if(course.price < 100) {
+        <div class="special-offer">Special Offer!</div>
+    }
+    <button (click)="viewDetails(course.title)">View Details</button>
+</div>

@@ -1,15 +1,4 @@
 <h2>{{ title }}</h2>
 @for (course of courses ; track course.id) {
-    <div class="course-item">
-    <h3>{{ course.name }}</h3>
-    <p>{{ course.description }}</p>
-    <p>Price: {{ course.price | currency :'USD'}}</p>
-    <p>Date: {{ course.date | date:'longDate' }} </p>
-    <p [hidden]="!course.soldOut">Status: Sold Out</p>
-    <img [ngStyle]="{'border': course.soldOut ? '2px solid red' : 'none'}" [src]="course.img" alt="{{ course.name }}" width="100" height="100">
-    @if(course.price < 100) {
-        <div class="special-offer">Special Offer!</div>
-    }
-    <button (click)="viewDetails(course.name)">View Details</button>
-</div>
+<app-course-card [course]="course"></app-course-card>
 }
