@@ -1,13 +1,16 @@
 <div class="course-card">
-    <img [src]="course.img" alt="{{ course.title }}" width="100" height="100">
+    <img [src]="course.img" [alt]="course.title" width="100">
     <h3>{{ course.title }}</h3>
     <p>{{ course.description }}</p>
-    <p>Price: {{ course.price | currency :'USD'}}</p>
-    <p>Date: {{ course.date | date:'longDate' }} </p>
-    <p [hidden]="!course.soldOut">Status: Sold Out</p>
-    @if(course.price < 100) {
+    <p>{{ course.price | currency:'USD' }}</p>
+    <p>{{ course.date | date:'longDate' }}</p>
+    <p [hidden]="!course.soldOut">Sold out</p>
+    @if (course.price < 50) {
         <div class="special-offer">Special Offer!</div>
     }
-    <button (click)="onWishlistAdded()">Add to Wishlist</button>
-    <button [disabled]="course.soldOut" (click)="onCourseBooked()">Book Course</button>
+    @if (course.onSale) {
+        <div class="sale-banner">On Sale!</div>
+    }
+    <button (click)="onAddToWishlist()">Add to Wishlist</button>
+    <button [disabled]="course.soldOut" (click)="onCourseBooked()">Book course</button>
 </div>
