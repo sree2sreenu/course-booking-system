@@ -4,6 +4,7 @@ import { PristineChangeEvent } from '@angular/forms';
 import { CourseCard } from '../course-card/course-card';
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list',
@@ -16,11 +17,19 @@ export class CoursesList implements OnInit {
   wishlist: Course[] = [];
   courses: Course[] = [];
 
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService, private route:ActivatedRoute, private router: Router) { }
  
   ngOnInit(): void {
-    // Initialization logic can go here
-    this.courseService.getCourses().subscribe({
+    this.route.queryParamMap.subscribe(params=>{
+      const desc = params.get('description');
+      // console.log('Sreeni description',desc)
+      this.loadCourses(desc);
+    });
+  }
+
+  loadCourses(description: string | null): void {
+     console.log('Sreeni description',description)
+    this.courseService.getCourses(description).subscribe({
       next: (data: Course[]) => {
         this.courses = data;
       },
@@ -28,7 +37,6 @@ export class CoursesList implements OnInit {
         console.log('Error while fetching courses:', err);
       }
     });
-
   }
 
   onCourseBooked(course: Course): void {
