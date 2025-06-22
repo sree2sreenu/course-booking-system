@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../models/course.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,11 @@ export class CourseService {
     { id: 3, title: 'RxJS Fundamentals', description: 'Asynchronous data streams', price: 45, date: '2025-05-05', img: 'rxjs-logo.png', soldOut: false, onSale: true }
   ];
 
+private baseUrl="http://localhost:3000"
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getCourses(): Course[]{
-  return this.courses;
+  getCourses(): Observable<Course[]>{
+  return this.http.get<Course[]>(`${this.baseUrl}/courses`);
 }
 
 }

@@ -21,6 +21,7 @@ export class CoursesList implements OnInit {
   ngOnInit() {
     // Initialization logic can go here
     this.courses = this.courseService.getCourses();
+ 
   }
 
   onCourseBooked(course: Course): void {
