@@ -7,7 +7,7 @@ import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [CourseCard],
+  imports: [CurrencyPipe,CourseCard],
   templateUrl: './courses-list.html',
   styleUrls: ['./courses-list.css']
 })
@@ -18,10 +18,17 @@ export class CoursesList implements OnInit {
 
   constructor(private courseService: CourseService) { }
  
-  ngOnInit() {
+  ngOnInit(): void {
     // Initialization logic can go here
-    this.courses = this.courseService.getCourses();
- 
+    this.courseService.getCourses().subscribe({
+      next: (data: Course[]) => {
+        this.courses = data;
+      },
+      error: (err) => {
+        console.log('Error while fetching courses:', err);
+      }
+    });
+
   }
 
   onCourseBooked(course: Course): void {
