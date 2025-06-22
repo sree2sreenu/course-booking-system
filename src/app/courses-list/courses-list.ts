@@ -22,7 +22,6 @@ export class CoursesList implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params=>{
       const desc = params.get('description');
-      // console.log('Sreeni description',desc)
       this.loadCourses(desc);
     });
   }
