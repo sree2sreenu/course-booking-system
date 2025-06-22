@@ -6,7 +6,7 @@ import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [CurrencyPipe,RouterOutlet,CourseDetails],
+  imports: [CurrencyPipe,RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
